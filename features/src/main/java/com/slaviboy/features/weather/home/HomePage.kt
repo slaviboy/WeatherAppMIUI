@@ -8,8 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawscope.DrawStyle
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +37,7 @@ fun HomePage() {
         ) {
             TopBar()
             Spacer(modifier = Modifier.height(0.3.dw))
-            MainBar()
+            MainBox()
             Spacer(modifier = Modifier.height(0.04.dw))
             AirQualityIndex()
             Spacer(modifier = Modifier.height(0.15.dw))
@@ -53,7 +57,67 @@ fun HomePage() {
                     Forecast24HoursItem()
                 )
             )
+            Spacer(modifier = Modifier.height(0.15.dw))
+            SunriseAndSunsetBox()
         }
+    }
+}
+
+@Composable
+fun SunriseAndSunsetBox() {
+    val angle = 135f
+
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(0.2.dw)
+            .padding(horizontal = 0.1.dw)
+            .background(Color.Green)
+    ) {
+
+        val w = size.width
+        val h = size.height * 2.5f
+        val topOffset = size.height * .1f
+
+        // angle [0, 180]
+        drawArc(
+            color = Color(0xFFf04231),
+            startAngle = -180f,
+            sweepAngle = 180f,
+            useCenter = false,
+            size = Size(w, h),
+            topLeft = Offset(0f, topOffset),
+            style = Stroke(
+                width = 2f,
+                pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 4f), 0f)
+            )
+        )
+        drawArc(
+            color = Color(0xFFf04231),
+            startAngle = -180f,
+            sweepAngle = angle,
+            useCenter = false,
+            size = Size(w, h),
+            topLeft = Offset(0f, topOffset),
+            style = Stroke(
+                width = 3f,
+                pathEffect = PathEffect.dashPathEffect(floatArrayOf(14f, 0f), 6f)
+            )
+        )
+
+        // angle [-180, -0]
+        val rx = w / 2f
+        val ry = h / 2f
+        var t = Math.tan((angle - 180.0) / 360.0 * Math.PI).toFloat()
+        val t2 = t * t
+        var px = rx * (1 - t2) / (1f + t2)
+        var py = ry * 2 * t / (1f + t2)
+        val r = this.size.height * 0.2f
+        drawCircle(
+            color = Color(0xFFFFD285),
+            radius = r,
+            center = Offset(px + rx, py + ry + topOffset)
+        )
     }
 }
 
@@ -114,7 +178,7 @@ fun TopBar() {
 }
 
 @Composable
-fun MainBar() {
+fun MainBox() {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top,
