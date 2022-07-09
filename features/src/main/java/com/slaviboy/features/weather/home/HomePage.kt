@@ -80,7 +80,7 @@ fun SunriseAndSunsetBox() {
 
         // angle [0, 180]
         drawArc(
-            color = Color(0xFFf04231),
+            color = Color.White,
             startAngle = -180f,
             sweepAngle = 180f,
             useCenter = false,
@@ -92,7 +92,7 @@ fun SunriseAndSunsetBox() {
             )
         )
         drawArc(
-            color = Color(0xFFf04231),
+            color = Color.White,
             startAngle = -180f,
             sweepAngle = angle,
             useCenter = false,
