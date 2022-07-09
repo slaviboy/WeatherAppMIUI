@@ -34,6 +34,7 @@ fun HomePage() {
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
         ) {
+            Spacer(modifier = Modifier.height(0.06.dw))
             TopBar()
             Spacer(modifier = Modifier.height(0.3.dw))
             MainBox()
