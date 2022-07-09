@@ -97,7 +97,7 @@ fun InfoBox() {
 
 @Composable
 fun SunriseAndSunsetBox() {
-    val angle = 130f
+    val angle = 135f
 
     Canvas(
         modifier = Modifier
