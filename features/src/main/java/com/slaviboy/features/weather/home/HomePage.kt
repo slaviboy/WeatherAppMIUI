@@ -3,6 +3,7 @@ package com.slaviboy.features.weather.home
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.slaviboy.composeunits.dw
 import com.slaviboy.composeunits.sw
 import com.slaviboy.features.R
@@ -40,7 +42,32 @@ fun HomePage() {
             MainBox()
             Spacer(modifier = Modifier.height(0.04.dw))
             AirQualityIndex()
-            Spacer(modifier = Modifier.height(0.15.dw))
+            Spacer(modifier = Modifier.height(0.25.dw))
+            Forecast5Days(
+                listOf(
+                    Forecast5DaysItem(),
+                    Forecast5DaysItem(),
+                    Forecast5DaysItem()
+                )
+            )
+            Spacer(modifier = Modifier.height(0.1.dw))
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(0.13.dw)
+                    .padding(horizontal = 0.05.dw)
+                    .background(
+                        color = Color(0x28FFFFFF),
+                        shape = RoundedCornerShape(0.1.dw)
+                    )
+            ) {
+                Text(
+                    text = "5-day forecast",
+                    color = Color.White
+                )
+            }
+            Spacer(modifier = Modifier.height(0.18.dw))
             Forecast24Hours(
                 listOf(
                     Forecast24HoursItem(),
@@ -58,9 +85,14 @@ fun HomePage() {
                 )
             )
             Spacer(modifier = Modifier.height(0.15.dw))
-            SunriseAndSunsetBox()
+            InfoBox()
         }
     }
+}
+
+@Composable
+fun InfoBox() {
+    SunriseAndSunsetBox()
 }
 
 @Composable
@@ -252,6 +284,7 @@ fun Forecast24Hours(forecast24HoursItems: List<Forecast24HoursItem>) {
         modifier = Modifier
             .horizontalScroll(rememberScrollState())
             .wrapContentSize()
+            .padding(horizontal = 0.1.dw)
     ) {
         forecast24HoursItems.forEach { item ->
             Spacer(modifier = Modifier.width(0.05.dw))
@@ -314,6 +347,78 @@ fun Forecast24HoursItem(forecast24HoursItem: Forecast24HoursItem) {
         }
     }
 }
+
+
+@Composable
+fun Forecast5Days(forecast5DaysItems: List<Forecast5DaysItem>) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .horizontalScroll(rememberScrollState())
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+        forecast5DaysItems.forEachIndexed { i, item ->
+            Spacer(modifier = Modifier.width(0.08.dw))
+            Forecast5DaysItem(item)
+            Spacer(modifier = Modifier.width(0.08.dw))
+            if (i < forecast5DaysItems.lastIndex) {
+                Divider(
+                    color = Color.White,
+                    modifier = Modifier
+                        .height(0.176.dw)
+                        .width(1.dp)
+                )
+
+            }
+        }
+    }
+}
+
+@Composable
+fun Forecast5DaysItem(forecast5DaysItem: Forecast5DaysItem) {
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            "(Clear)",
+            fontSize = 0.028.sw,
+            fontFamily = AnoFont,
+            color = Color(0xFFFEFFFF)
+        )
+        Image(
+            painter = painterResource(id = R.drawable.ic_day_clear_sky),
+            contentDescription = null,
+            contentScale = ContentScale.FillHeight,
+            modifier = Modifier
+                .wrapContentWidth()
+                .height(0.11.dw)
+        )
+        Spacer(modifier = Modifier.height(0.025.dw))
+        Text(
+            "22°/33°",
+            fontSize = 0.038.sw,
+            fontFamily = AnoFont,
+            color = Color(0xFFFEFFFF)
+        )
+        Spacer(modifier = Modifier.height(0.01.dw))
+        Text(
+            "Sat",
+            fontSize = 0.027.sw,
+            fontFamily = AnoFont,
+            color = Color(0xFFFEFFFF)
+        )
+    }
+}
+
+class Forecast5DaysItem(
+    val time: Long = System.currentTimeMillis(),
+    val temperature: Float = 20.2f,
+    val weatherIconType: Int = 0,
+    val windSpeed: Float = 13.4f
+)
 
 class Forecast24HoursItem(
     val time: Long = System.currentTimeMillis(),
