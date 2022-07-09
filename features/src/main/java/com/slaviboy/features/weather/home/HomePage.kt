@@ -432,3 +432,7 @@ class Forecast24HoursItem3(
     val minTemperature: Float = 20.2f,
     val maxTemperature: Float = 20.2f,
 )
+
+// git commit -S -m "Test signed commmit GPG-key"
+// git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+//
