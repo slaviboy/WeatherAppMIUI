@@ -12,7 +12,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -72,7 +71,6 @@ fun SunriseAndSunsetBox() {
             .fillMaxWidth()
             .height(0.2.dw)
             .padding(horizontal = 0.1.dw)
-            .background(Color.Green)
     ) {
 
         val w = size.width
@@ -108,11 +106,11 @@ fun SunriseAndSunsetBox() {
         // angle [-180, -0]
         val rx = w / 2f
         val ry = h / 2f
-        var t = Math.tan((angle - 180.0) / 360.0 * Math.PI).toFloat()
+        val t = Math.tan((angle - 180.0) / 360.0 * Math.PI).toFloat()
         val t2 = t * t
-        var px = rx * (1 - t2) / (1f + t2)
-        var py = ry * 2 * t / (1f + t2)
-        val r = this.size.height * 0.2f
+        val px = rx * (1 - t2) / (1f + t2)
+        val py = ry * 2 * t / (1f + t2)
+        val r = this.size.height * 0.1f
         drawCircle(
             color = Color(0xFFFFD285),
             radius = r,
@@ -129,8 +127,8 @@ fun Background() {
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color(0xFF0071D1),
-                        Color(0xFF6BA5E4)
+                        Color(0xFF357FD4),
+                        Color(0xFF6AA4E3)
                     ),
                     start = Offset(0f, 0f),
                     end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
@@ -147,7 +145,6 @@ fun TopBar() {
         modifier = Modifier
             .fillMaxWidth()
             .height(0.13.dw)
-            .background(Color.Green)
             .padding(horizontal = 0.05.dw)
     ) {
         Image(
@@ -157,11 +154,11 @@ fun TopBar() {
             modifier = Modifier
                 .wrapContentWidth()
                 .fillMaxHeight()
-                .padding(0.038.dw)
+                .padding(0.043.dw)
         )
         Text(
             "Blagoevgrad",
-            fontSize = 0.045.sw,
+            fontSize = 0.04.sw,
             fontFamily = RobotoFont,
             color = Color.White
         )
@@ -172,7 +169,7 @@ fun TopBar() {
             modifier = Modifier
                 .wrapContentWidth()
                 .fillMaxHeight()
-                .padding(0.038.dw)
+                .padding(0.043.dw)
         )
     }
 }
@@ -185,15 +182,12 @@ fun MainBox() {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(Color.Green)
     ) {
         Text(
             "26",
             fontSize = 0.32.sw,
             fontFamily = AnoFont,
-            color = Color(0xFFDBE8F8),
-            modifier = Modifier
-                .background(Color.Blue)
+            color = Color(0xFFDBE8F8)
         )
         Text(
             "°C",
@@ -211,9 +205,7 @@ fun MainBox() {
         "Clear",
         fontSize = 0.05.sw,
         fontFamily = AnoFont,
-        color = Color.White,
-        modifier = Modifier
-            .background(Color.Blue)
+        color = Color.White
     )
 }
 
@@ -230,7 +222,7 @@ fun AirQualityIndex() {
                 shape = RoundedCornerShape(0.05.dw)
             )
     ) {
-        Spacer(modifier = Modifier.width(0.01.dw))
+        Spacer(modifier = Modifier.width(0.02.dw))
         Image(
             painter = painterResource(id = R.drawable.ic_leaf),
             contentDescription = null,
@@ -238,16 +230,14 @@ fun AirQualityIndex() {
             modifier = Modifier
                 .wrapContentWidth()
                 .fillMaxHeight()
-                .padding(0.015.dw)
+                .padding(vertical = 0.015.dw)
         )
-        Spacer(modifier = Modifier.width(0.015.dw))
+        Spacer(modifier = Modifier.width(0.01.dw))
         Text(
             "AQI 32",
             fontSize = 0.03.sw,
             fontFamily = RobotoFont,
-            color = Color.White,
-            modifier = Modifier
-                .background(Color.Blue)
+            color = Color.White
         )
         Spacer(modifier = Modifier.width(0.02.dw))
     }
@@ -261,7 +251,6 @@ fun Forecast24Hours(forecast24HoursItems: List<Forecast24HoursItem>) {
         modifier = Modifier
             .horizontalScroll(rememberScrollState())
             .wrapContentSize()
-            .background(Color.Black)
     ) {
         forecast24HoursItems.forEach { item ->
             Spacer(modifier = Modifier.width(0.05.dw))
@@ -281,18 +270,14 @@ fun Forecast24HoursItem(forecast24HoursItem: Forecast24HoursItem) {
             "16:00",
             fontSize = 0.025.sw,
             fontFamily = AnoFont,
-            color = Color(0xFFFEFFFF),
-            modifier = Modifier
-                .background(Color.Blue)
+            color = Color(0xFFFEFFFF)
         )
         Spacer(modifier = Modifier.height(0.02.dw))
         Text(
             "33°",
             fontSize = 0.045.sw,
             fontFamily = AnoFont,
-            color = Color(0xFFFEFFFF),
-            modifier = Modifier
-                .background(Color.Blue)
+            color = Color(0xFFFEFFFF)
         )
         Spacer(modifier = Modifier.height(0.02.dw))
         Image(
@@ -309,7 +294,6 @@ fun Forecast24HoursItem(forecast24HoursItem: Forecast24HoursItem) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .wrapContentSize()
-                .background(Color.Black)
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_direction),
@@ -317,16 +301,14 @@ fun Forecast24HoursItem(forecast24HoursItem: Forecast24HoursItem) {
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .wrapContentWidth()
-                    .height(0.033.dw)
+                    .height(0.031.dw)
             )
             Spacer(modifier = Modifier.width(0.01.dw))
             Text(
                 "3.5km/h",
-                fontSize = 0.02.sw,
+                fontSize = 0.023.sw,
                 fontFamily = AnoFont,
-                color = Color(0xFFFEFFFF),
-                modifier = Modifier
-                    .background(Color.Blue)
+                color = Color(0xFFFEFFFF)
             )
         }
     }
