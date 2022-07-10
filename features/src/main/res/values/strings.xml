@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wind_speed">Wind speed</string>
+    <string name="uv_index">UV index</string>
+    <string name="chance_of_rain">Chance of rain</string>
+    <string name="pressure">Pressure</string>
+    <string name="feels_like">Feels like</string>
+    <string name="humidity">Humidity</string>
+</resources>

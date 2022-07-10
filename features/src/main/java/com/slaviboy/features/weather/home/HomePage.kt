@@ -1,5 +1,7 @@
 package com.slaviboy.features.weather.home
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,9 +15,11 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.slaviboy.composeunits.dw
@@ -38,11 +42,16 @@ fun HomePage() {
         ) {
             Spacer(modifier = Modifier.height(0.06.dw))
             TopBar()
+
             Spacer(modifier = Modifier.height(0.3.dw))
             MainBox()
+
             Spacer(modifier = Modifier.height(0.04.dw))
             AirQualityIndex()
-            Spacer(modifier = Modifier.height(0.25.dw))
+
+            Spacer(modifier = Modifier.height(0.28.dw))
+            BoxTitle("5-day forecast")
+            Spacer(modifier = Modifier.height(0.07.dw))
             Forecast5Days(
                 listOf(
                     Forecast5DaysItem(),
@@ -67,7 +76,10 @@ fun HomePage() {
                     color = Color.White
                 )
             }
-            Spacer(modifier = Modifier.height(0.18.dw))
+
+            Spacer(modifier = Modifier.height(0.25.dw))
+            BoxTitle("24-hours forecast")
+            Spacer(modifier = Modifier.height(0.07.dw))
             Forecast24Hours(
                 listOf(
                     Forecast24HoursItem(),
@@ -84,15 +96,172 @@ fun HomePage() {
                     Forecast24HoursItem()
                 )
             )
-            Spacer(modifier = Modifier.height(0.15.dw))
+
+            Spacer(modifier = Modifier.height(0.2.dw))
+            BoxTitle("More info")
+            Spacer(modifier = Modifier.height(0.07.dw))
             InfoBox()
+            Spacer(modifier = Modifier.height(0.07.dw))
         }
+    }
+}
+
+
+@Composable
+fun BoxTitle(text: String) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+        Text(
+            text = text,
+            color = Color.White,
+            fontSize = 0.06.sw,
+            fontFamily = RobotoFont,
+            fontWeight = FontWeight.Light,
+            modifier = Modifier
+                .padding(horizontal = 0.05.dw)
+        )
     }
 }
 
 @Composable
 fun InfoBox() {
-    SunriseAndSunsetBox()
+    Column(
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 0.05.dw)
+            .background(
+                color = Color(0x28FFFFFF),
+                shape = RoundedCornerShape(0.04.dw)
+            )
+    ) {
+        Spacer(modifier = Modifier.height(0.05.dw))
+        SunriseAndSunsetBox()
+        Spacer(modifier = Modifier.height(0.1.dw))
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(horizontal = 0.055.dw)
+        ) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "05:52",
+                    color = Color.White,
+                    fontSize = 0.032.sw
+                )
+                Text(
+                    text = "Sunrise",
+                    color = Color.White,
+                    fontSize = 0.025.sw
+                )
+            }
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "05:52",
+                    color = Color.White,
+                    fontSize = 0.032.sw
+                )
+                Text(
+                    text = "Sunrise",
+                    color = Color.White,
+                    fontSize = 0.025.sw
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(0.1.dw))
+        InfoBoxContent()
+        Spacer(modifier = Modifier.height(0.07.dw))
+    }
+}
+
+
+@Composable
+fun InfoBoxContent() {
+    Row(
+        horizontalArrangement = Arrangement.Start,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 0.08.dw)
+    ) {
+        InfoBoxItem(R.drawable.ic_info_feels_like, R.string.feels_like, "30°C")
+        InfoBoxItem(R.drawable.ic_info_humidity, R.string.humidity, "38%")
+    }
+    Spacer(modifier = Modifier.height(0.04.dw))
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 0.08.dw)
+    ) {
+        InfoBoxItem(R.drawable.ic_info_rain, R.string.chance_of_rain, "70%")
+        InfoBoxItem(R.drawable.ic_info_pressure, R.string.pressure, "302mbar")
+    }
+    Spacer(modifier = Modifier.height(0.04.dw))
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 0.08.dw)
+    ) {
+        InfoBoxItem(R.drawable.ic_info_wind_speed, R.string.wind_speed, "22.8km/h")
+        InfoBoxItem(R.drawable.ic_info_uv_index, R.string.uv_index, "5")
+    }
+}
+
+@Composable
+fun InfoBoxItem(
+    @DrawableRes imageResId: Int,
+    @StringRes title: Int,
+    description: String
+) {
+    Row(
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.Top,
+        modifier = Modifier
+            .width(0.4.dw)
+    ) {
+        Image(
+            painter = painterResource(id = imageResId),
+            contentDescription = null,
+            contentScale = ContentScale.FillHeight,
+            modifier = Modifier
+                .height(0.1.dw)
+        )
+        Spacer(modifier = Modifier.width(0.03.dw))
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                text = stringResource(id = title),
+                color = Color(0x66FFFFFF),
+                fontSize = 0.025.sw
+            )
+            Text(
+                text = description,
+                color = Color.White,
+                fontSize = 0.038.sw
+            )
+        }
+    }
 }
 
 @Composable
@@ -102,7 +271,7 @@ fun SunriseAndSunsetBox() {
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(0.2.dw)
+            .height(0.25.dw)
             .padding(horizontal = 0.1.dw)
     ) {
 
@@ -120,7 +289,8 @@ fun SunriseAndSunsetBox() {
             topLeft = Offset(0f, topOffset),
             style = Stroke(
                 width = 2f,
-                pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 4f), 0f)
+                cap = StrokeCap.Round,
+                pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 9f), 0f)
             )
         )
         drawArc(
@@ -132,6 +302,7 @@ fun SunriseAndSunsetBox() {
             topLeft = Offset(0f, topOffset),
             style = Stroke(
                 width = 3f,
+                cap = StrokeCap.Round,
                 pathEffect = PathEffect.dashPathEffect(floatArrayOf(14f, 0f), 6f)
             )
         )
@@ -178,7 +349,7 @@ fun TopBar() {
         modifier = Modifier
             .fillMaxWidth()
             .height(0.13.dw)
-            .padding(horizontal = 0.05.dw)
+            .padding(horizontal = 0.03.dw)
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_plus),
@@ -284,7 +455,7 @@ fun Forecast24Hours(forecast24HoursItems: List<Forecast24HoursItem>) {
         modifier = Modifier
             .horizontalScroll(rememberScrollState())
             .wrapContentSize()
-            .padding(horizontal = 0.1.dw)
+            .padding(horizontal = 0.06.dw)
     ) {
         forecast24HoursItems.forEach { item ->
             Spacer(modifier = Modifier.width(0.05.dw))
