@@ -36,14 +36,14 @@ fun InfoBoxItem(
             modifier = Modifier
                 .height(0.08.dw)
         )
-        Spacer(modifier = Modifier.width(0.015.dw))
+        Spacer(modifier = Modifier.width(0.02.dw))
         Divider(
             color = Color(0x66FFFFFF),
             modifier = Modifier
                 .height(0.06.dw)
                 .width(1.dp)
         )
-        Spacer(modifier = Modifier.width(0.015.dw))
+        Spacer(modifier = Modifier.width(0.02.dw))
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start

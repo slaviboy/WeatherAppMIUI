@@ -62,7 +62,7 @@ fun HomePage() {
                 )
             }
 
-            Spacer(modifier = Modifier.height(0.25.dw))
+            Spacer(modifier = Modifier.height(0.12.dw))
             BoxTitle("24-hours forecast")
             Spacer(modifier = Modifier.height(0.07.dw))
             Forecast24Hours(
@@ -82,11 +82,11 @@ fun HomePage() {
                 )
             )
 
-            Spacer(modifier = Modifier.height(0.2.dw))
+            Spacer(modifier = Modifier.height(0.1.dw))
             BoxTitle("More info")
             Spacer(modifier = Modifier.height(0.07.dw))
             InfoBox()
-            Spacer(modifier = Modifier.height(0.07.dw))
+            Spacer(modifier = Modifier.height(0.1.dw))
         }
     }
 }

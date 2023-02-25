@@ -21,7 +21,7 @@ fun MainBox() {
             .wrapContentHeight()
     ) {
         Text(
-            "26",
+            "14",
             fontSize = 0.32.sw,
             fontFamily = AnoFont,
             color = Color(0xFFDBE8F8)
@@ -29,7 +29,7 @@ fun MainBox() {
         Text(
             "°C",
             fontSize = 0.061.sw,
-            fontWeight = FontWeight.Black,
+            fontWeight = FontWeight.Bold,
             fontFamily = AnoFont,
             color = Color(0xFFDBE8F8),
             modifier = Modifier
