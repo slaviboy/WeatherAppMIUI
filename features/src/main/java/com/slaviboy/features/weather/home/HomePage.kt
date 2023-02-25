@@ -1,17 +1,15 @@
 package com.slaviboy.features.weather.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.slaviboy.composeunits.dw
 import com.slaviboy.features.weather.home.composables.*
+import com.slaviboy.features.weather.home.entities.Forecast24HoursItem
+import com.slaviboy.features.weather.home.entities.Forecast5DaysItem
 
 @Composable
 fun HomePage() {
@@ -35,7 +33,7 @@ fun HomePage() {
             AirQualityIndex()
 
             Spacer(modifier = Modifier.height(0.28.dw))
-            Forecast5Days(
+            Forecast5DaysContainer(
                 listOf(
                     Forecast5DaysItem(),
                     Forecast5DaysItem(),
@@ -44,7 +42,7 @@ fun HomePage() {
             )
 
             Spacer(modifier = Modifier.height(0.07.dw))
-            Forecast24Hours(
+            Forecast24HoursContainer(
                 listOf(
                     Forecast24HoursItem(),
                     Forecast24HoursItem(),
@@ -67,26 +65,6 @@ fun HomePage() {
         }
     }
 }
-
-class Forecast5DaysItem(
-    val time: Long = System.currentTimeMillis(),
-    val temperature: Float = 20.2f,
-    val weatherIconType: Int = 0,
-    val windSpeed: Float = 13.4f
-)
-
-class Forecast24HoursItem(
-    val time: Long = System.currentTimeMillis(),
-    val temperature: Float = 20.2f,
-    val weatherIconType: Int = 0,
-    val windSpeed: Float = 13.4f
-)
-
-
-class Forecast24HoursItem3(
-    val minTemperature: Float = 20.2f,
-    val maxTemperature: Float = 20.2f,
-)
 
 // git commit -S -m "Test signed commmit GPG-key"
 // git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"

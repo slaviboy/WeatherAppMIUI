@@ -13,20 +13,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.slaviboy.composeunits.dw
 import com.slaviboy.features.R
-import com.slaviboy.features.weather.home.Forecast5DaysItem
+import com.slaviboy.features.weather.home.entities.Forecast5DaysItem
 
 @Composable
-fun Forecast5Days(forecast5DaysItems: List<Forecast5DaysItem>) {
+fun Forecast5DaysContainer(forecast5DaysItems: List<Forecast5DaysItem>) {
     Box(
         modifier = Modifier
             .padding(horizontal = 0.06.dw)
             .background(
-                color = Color(0x28FFFFFF),
+                color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.04.dw)
             )
             .padding(
                 top = 0.045.dw,
-                bottom = 0.08.dw
+                bottom = 0.05.dw
             )
     ) {
         Column(
@@ -47,7 +47,7 @@ fun Forecast5Days(forecast5DaysItems: List<Forecast5DaysItem>) {
             ) {
                 forecast5DaysItems.forEachIndexed { i, item ->
                     Spacer(modifier = Modifier.width(0.08.dw))
-                    Forecast5DaysItem(item)
+                    Forecast5DaysContainerItem(item)
                     Spacer(modifier = Modifier.width(0.08.dw))
                     if (i < forecast5DaysItems.lastIndex) {
                         Divider(

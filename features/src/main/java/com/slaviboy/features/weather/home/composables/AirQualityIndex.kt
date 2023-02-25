@@ -25,7 +25,7 @@ fun AirQualityIndex() {
             .wrapContentWidth()
             .height(0.07.dw)
             .background(
-                color = Color(0x33FFFFFF),
+                color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.05.dw)
             )
     ) {

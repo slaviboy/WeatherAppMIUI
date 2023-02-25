@@ -22,7 +22,7 @@ fun InfoBox() {
             .wrapContentHeight()
             .padding(horizontal = 0.06.dw)
             .background(
-                color = Color(0x28FFFFFF),
+                color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.04.dw)
             )
             .padding(

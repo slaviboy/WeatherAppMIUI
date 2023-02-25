@@ -15,12 +15,11 @@ import androidx.compose.ui.res.painterResource
 import com.slaviboy.composeunits.dw
 import com.slaviboy.composeunits.sw
 import com.slaviboy.features.R
-import com.slaviboy.features.weather.home.Forecast5DaysItem
+import com.slaviboy.features.weather.home.entities.Forecast5DaysItem
 import com.slaviboy.fonts.AnoFont
 
 @Composable
-fun Forecast5DaysItem(forecast5DaysItem: Forecast5DaysItem) {
-
+fun Forecast5DaysContainerItem(forecast5DaysItem: Forecast5DaysItem = Forecast5DaysItem()) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

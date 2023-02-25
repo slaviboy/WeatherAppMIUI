@@ -11,15 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.slaviboy.composeunits.dw
 import com.slaviboy.features.R
-import com.slaviboy.features.weather.home.Forecast24HoursItem
+import com.slaviboy.features.weather.home.entities.Forecast24HoursItem
 
 @Composable
-fun Forecast24Hours(forecast24HoursItems: List<Forecast24HoursItem>) {
+fun Forecast24HoursContainer(forecast24HoursItems: List<Forecast24HoursItem>) {
     Box(
         modifier = Modifier
             .padding(horizontal = 0.06.dw)
             .background(
-                color = Color(0x28FFFFFF),
+                color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.04.dw)
             )
             .padding(
@@ -44,7 +44,7 @@ fun Forecast24Hours(forecast24HoursItems: List<Forecast24HoursItem>) {
             ) {
                 forecast24HoursItems.forEach { item ->
                     Spacer(modifier = Modifier.width(0.05.dw))
-                    Forecast24HoursItem(item)
+                    Forecast24HoursContainerItem(item)
                     Spacer(modifier = Modifier.width(0.05.dw))
                 }
             }
