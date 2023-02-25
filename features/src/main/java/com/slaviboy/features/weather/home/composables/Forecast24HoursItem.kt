@@ -17,7 +17,6 @@ import com.slaviboy.fonts.AnoFont
 
 @Composable
 fun Forecast24HoursItem(forecast24HoursItem: Forecast24HoursItem) {
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

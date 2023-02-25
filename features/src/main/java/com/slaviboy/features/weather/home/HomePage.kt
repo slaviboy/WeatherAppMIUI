@@ -35,8 +35,6 @@ fun HomePage() {
             AirQualityIndex()
 
             Spacer(modifier = Modifier.height(0.28.dw))
-            BoxTitle("5-day forecast")
-            Spacer(modifier = Modifier.height(0.07.dw))
             Forecast5Days(
                 listOf(
                     Forecast5DaysItem(),
@@ -44,26 +42,7 @@ fun HomePage() {
                     Forecast5DaysItem()
                 )
             )
-            Spacer(modifier = Modifier.height(0.1.dw))
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(0.13.dw)
-                    .padding(horizontal = 0.05.dw)
-                    .background(
-                        color = Color(0x28FFFFFF),
-                        shape = RoundedCornerShape(0.1.dw)
-                    )
-            ) {
-                Text(
-                    text = "5-day forecast",
-                    color = Color.White
-                )
-            }
 
-            Spacer(modifier = Modifier.height(0.12.dw))
-            BoxTitle("24-hours forecast")
             Spacer(modifier = Modifier.height(0.07.dw))
             Forecast24Hours(
                 listOf(
@@ -82,8 +61,6 @@ fun HomePage() {
                 )
             )
 
-            Spacer(modifier = Modifier.height(0.1.dw))
-            BoxTitle("More info")
             Spacer(modifier = Modifier.height(0.07.dw))
             InfoBox()
             Spacer(modifier = Modifier.height(0.1.dw))
