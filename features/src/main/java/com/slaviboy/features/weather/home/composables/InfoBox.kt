@@ -10,21 +10,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.slaviboy.composeunits.dw
 import com.slaviboy.composeunits.sw
+import com.slaviboy.features.R
 
 @Composable
 fun InfoBox() {
     Column(
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(horizontal = 0.05.dw)
+            .padding(horizontal = 0.06.dw)
             .background(
-                color = Color(0x28FFFFFF),
+                color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.04.dw)
             )
+            .padding(
+                top = 0.045.dw,
+                bottom = 0.08.dw
+            )
     ) {
+        BoxTitleWithIcon(
+            iconResId = R.drawable.ic_info,
+            titleResId = R.string.more_info
+        )
         Spacer(modifier = Modifier.height(0.05.dw))
         SunriseAndSunsetBox()
         Spacer(modifier = Modifier.height(0.1.dw))
@@ -69,6 +78,5 @@ fun InfoBox() {
         }
         Spacer(modifier = Modifier.height(0.1.dw))
         InfoBoxContent()
-        Spacer(modifier = Modifier.height(0.07.dw))
     }
 }

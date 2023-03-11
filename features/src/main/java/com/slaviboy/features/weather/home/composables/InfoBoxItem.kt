@@ -56,7 +56,7 @@ fun InfoBoxItem(
             Text(
                 text = description,
                 color = Color.White,
-                fontSize = 0.042.sw
+                fontSize = 0.041.sw
             )
         }
     }

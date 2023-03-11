@@ -6,4 +6,7 @@
     <string name="pressure">Pressure</string>
     <string name="feels_like">Feels like</string>
     <string name="humidity">Humidity</string>
+    <string name="twenty_four_hours_forecast">24-hours forecast</string>
+    <string name="five_day_forecast">5-day forecast</string>
+    <string name="more_info">Additional information</string>
 </resources>

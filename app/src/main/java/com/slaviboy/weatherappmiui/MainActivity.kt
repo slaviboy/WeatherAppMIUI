@@ -1,11 +1,9 @@
 package com.slaviboy.weatherappmiui
 
 import android.app.Activity
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.slaviboy.composeunits.initSize

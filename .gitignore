@@ -1,5 +1,9 @@
 *.iml
 .gradle
+.idea
+/buildSrc/.gradle
+/buildSrc/build
+/buildSrc/build/pl
 /local.properties
 /.idea
 /.idea/caches
@@ -14,3 +18,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/buildSrc/build/pluginUnderTestMetadata/
