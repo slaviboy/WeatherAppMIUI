@@ -11,6 +11,7 @@ object ApplicationDependencies {
     private const val composeUIToolingPreview = "androidx.compose.ui:ui-tooling-preview:1.4.0-beta02"
     private const val percentageUnits = "com.github.slaviboy:JetpackComposePercentageUnits:${ApplicationDependencyVersions.percentageUnits}"
     private const val daggerHilt = "com.google.dagger:hilt-android:${ApplicationDependencyVersions.daggerHilt}"
+    private const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${ApplicationDependencyVersions.daggerHilt}"
 
     // Testing
     const val junit = "junit:junit:${ApplicationDependencyVersions.junit}"
@@ -36,5 +37,9 @@ object ApplicationDependencies {
         composeMaterial,
         composeUIToolingPreview,
         daggerHilt
+    )
+
+    val kapt = arrayOf(
+        daggerHiltCompiler
     )
 }
