@@ -9,6 +9,7 @@ object ApplicationDependencyVersions {
     const val compose = "1.4.0-beta01"
     const val kotlinCoroutinesCore = "1.3.9"
     const val daggerHilt = "2.45"
+    const val kotlinCompiler = "1.4.3"
 
     // 3rd party library
     const val percentageUnits = "1.0.0"
