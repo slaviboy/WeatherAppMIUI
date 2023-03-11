@@ -1,3 +1,3 @@
 dependencies {
-    implementation(ApplicationDependencies.dependenciesApp)
+    implementation(*ApplicationDependencies.dependenciesLibrary)
 }

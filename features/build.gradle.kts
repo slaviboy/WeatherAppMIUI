@@ -1,4 +1,4 @@
 dependencies {
-    implementation(ApplicationDependencies.dependenciesApp)
-    implementation(project(mapOf("path" to ":fonts")))
+    implementation(*ApplicationDependencies.dependenciesApp)
+    project(":fonts")
 }

@@ -15,7 +15,7 @@ object ApplicationDependencies {
     // Testing
     const val junit = "junit:junit:${ApplicationDependencyVersions.junit}"
 
-    val dependenciesApp = arrayListOf(
+    val dependenciesApp = arrayOf(
         kotlinStandardLib,
         kotlinxCoroutinesCore,
         composeUI,
@@ -29,11 +29,12 @@ object ApplicationDependencies {
         daggerHilt
     )
 
-    val dependenciesLibrary = arrayListOf(
+    val dependenciesLibrary = arrayOf(
         kotlinStandardLib,
         kotlinxCoroutinesCore,
         composeUI,
         composeMaterial,
-        composeUIToolingPreview
+        composeUIToolingPreview,
+        daggerHilt
     )
 }

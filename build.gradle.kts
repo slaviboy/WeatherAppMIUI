@@ -115,7 +115,7 @@ fun PluginAware.setLibraryPlugins() {
 fun Project.setDependencies() {
     dependencies {
         kapt(
-            listOf("com.google.dagger:hilt-android-compiler:2.44")
+            "com.google.dagger:hilt-android-compiler:2.44"
         )
     }
 }

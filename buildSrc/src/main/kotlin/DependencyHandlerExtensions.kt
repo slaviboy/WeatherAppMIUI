@@ -1,24 +1,30 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.kapt(list: List<String>) {
+fun DependencyHandler.kapt(vararg list: String) {
     list.forEach { dependency ->
         add("kapt", dependency)
     }
 }
 
-fun DependencyHandler.implementation(list: List<String>) {
+fun DependencyHandler.implementation(vararg list: String) {
     list.forEach { dependency ->
         add("implementation", dependency)
     }
 }
 
-fun DependencyHandler.androidTestImplementation(list: List<String>) {
+fun DependencyHandler.project(vararg list: String) {
+    list.forEach { dependency ->
+        add("implementation", project(mapOf("path" to dependency)))
+    }
+}
+
+fun DependencyHandler.androidTestImplementation(vararg list: String) {
     list.forEach { dependency ->
         add("androidTestImplementation", dependency)
     }
 }
 
-fun DependencyHandler.testImplementation(list: List<String>) {
+fun DependencyHandler.testImplementation(vararg list: String) {
     list.forEach { dependency ->
         add("testImplementation", dependency)
     }
