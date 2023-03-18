@@ -13,18 +13,19 @@ import com.slaviboy.fonts.AnoFont
 
 @Composable
 fun MainBox() {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.Top,
+    Box(
+        contentAlignment = Alignment.TopEnd,
         modifier = Modifier
-            .fillMaxWidth()
+            .wrapContentWidth()
             .wrapContentHeight()
     ) {
         Text(
-            "14",
-            fontSize = 0.32.sw,
+            "19",
+            fontSize = 0.38.sw,
             fontFamily = AnoFont,
-            color = Color(0xFFDBE8F8)
+            color = Color(0xFFDBE8F8),
+            modifier = Modifier
+                .offset(x = (-0.03).dw, y = (-0.05).dw)
         )
         Text(
             "°C",
@@ -33,7 +34,7 @@ fun MainBox() {
             fontFamily = AnoFont,
             color = Color(0xFFDBE8F8),
             modifier = Modifier
-                .offset(y = 0.05.dw)
+                .offset(x = 0.1.dw, y = 0.05.dw)
         )
     }
 
