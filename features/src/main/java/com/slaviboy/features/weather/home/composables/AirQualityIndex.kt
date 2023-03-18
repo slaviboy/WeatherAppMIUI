@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -17,13 +18,14 @@ import com.slaviboy.features.R
 import com.slaviboy.fonts.RobotoFont
 
 @Composable
-fun AirQualityIndex() {
+fun AirQualityIndex(alpha: Float) {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .wrapContentWidth()
             .height(0.07.dw)
+            .alpha(alpha + 0.95f)
             .background(
                 color = Color(0x1AFFFFFF),
                 shape = RoundedCornerShape(0.05.dw)

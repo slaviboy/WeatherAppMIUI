@@ -5,14 +5,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import com.slaviboy.composeunits.DeviceHeight
 import com.slaviboy.composeunits.dw
 import com.slaviboy.composeunits.sw
 import com.slaviboy.fonts.AnoFont
 
 @Composable
-fun MainBox() {
+fun MainBox(alpha: Float) {
     Box(
         contentAlignment = Alignment.TopEnd,
         modifier = Modifier
@@ -26,6 +28,7 @@ fun MainBox() {
             color = Color(0xFFDBE8F8),
             modifier = Modifier
                 .offset(x = (-0.02).dw, y = (-0.05).dw)
+                .alpha(alpha)
         )
         Text(
             "°C",
@@ -35,14 +38,17 @@ fun MainBox() {
             color = Color(0xFFDBE8F8),
             modifier = Modifier
                 .offset(x = 0.1.dw, y = 0.05.dw)
+                .alpha(alpha - 0.1f)
         )
     }
 
     Spacer(modifier = Modifier.height(0.02.dw))
     Text(
-        "Clear",
+        text = "Clear",
         fontSize = 0.05.sw,
         fontFamily = AnoFont,
-        color = Color.White
+        color = Color.White,
+        modifier = Modifier
+            .alpha(alpha + 0.95f)
     )
 }

@@ -1,10 +1,15 @@
 package com.slaviboy.features.weather.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -17,10 +22,14 @@ import com.slaviboy.composeunits.dw
 import com.slaviboy.features.weather.home.composables.*
 import com.slaviboy.features.weather.home.entities.Forecast24HoursItem
 import com.slaviboy.features.weather.home.entities.Forecast5DaysItem
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun HomePage() {
     Background()
+    val scrollState = rememberScrollState()
+    val alpha = 1f - (scrollState.value / (DeviceHeight * 0.17f)) // [0,1]
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -28,14 +37,14 @@ fun HomePage() {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
         ) {
 
             Spacer(modifier = Modifier.height(0.45.dw))
-            MainBox()
+            MainBox(alpha)
 
             Spacer(modifier = Modifier.height(0.04.dw))
-            AirQualityIndex()
+            AirQualityIndex(alpha)
 
             Spacer(modifier = Modifier.height(0.28.dw))
             Forecast5DaysContainer(
