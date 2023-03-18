@@ -20,8 +20,8 @@ fun Background() {
                         Color(0xFF357FD4),
                         Color(0xFF6AA4E3)
                     ),
-                    start = Offset(0f, 0f),
-                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+                    start = Offset.Zero,
+                    end = Offset.Infinite
                 )
             )
     )

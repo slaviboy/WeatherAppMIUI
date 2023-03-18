@@ -25,7 +25,7 @@ fun MainBox() {
             fontFamily = AnoFont,
             color = Color(0xFFDBE8F8),
             modifier = Modifier
-                .offset(x = (-0.03).dw, y = (-0.05).dw)
+                .offset(x = (-0.02).dw, y = (-0.05).dw)
         )
         Text(
             "°C",
