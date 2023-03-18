@@ -1,5 +1,7 @@
 # WeatherAppMIUI
 
+<img src="https://github.com/slaviboy/RepositoryImages/blob/main/apps/weatherapp_miui_home.png" alt="Image" />
+
 1) Kotlin DSL
 2) Jetpack compose
 3) Dagger Hilt for dependency injection
